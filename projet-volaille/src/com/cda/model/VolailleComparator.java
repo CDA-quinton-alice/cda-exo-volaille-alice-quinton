@@ -9,6 +9,9 @@ public class VolailleComparator implements Comparator<Volaille> {
 
 	@Override
 	public int compare(Volaille pVolailleA, Volaille pVolailleB) {
+		if (pVolailleA == pVolailleB) { // correction du bug dans comparator 
+			return 0;
+		}
 		if(pVolailleA instanceof VolailleAbattable) {
 			if(pVolailleB instanceof VolailleAbattable) {
 				int vResultat = Float.compare(
