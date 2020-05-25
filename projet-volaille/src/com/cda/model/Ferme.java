@@ -24,6 +24,7 @@ public final class Ferme {
 	private final Set<Cygne> cygnes; // les cygnes avaient encore disparus ! 
 
 	private Ferme() {
+		this.cygnes = new TreeSet<>();
 		this.volaillesMap = new HashMap<>();
 		this.volaillesSet = new TreeSet<>(new VolailleComparator());
 		this.canards = new TreeSet<>();
