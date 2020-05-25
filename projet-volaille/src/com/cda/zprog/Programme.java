@@ -13,12 +13,13 @@ public class Programme {
 		
 		TreeMap<Integer,Action> actions = new TreeMap<>();
 		ajouterAction(actions,LesActions.AFFICHER_LES_VOLAILLES);
-		ajouterAction(actions,LesActions.AJOUTER_PAON);
-		ajouterAction(actions,LesActions.AJOUTER_VOLAILLE);
+		ajouterAction(actions,LesActions.AJOUTER_VOLAILLE_A_GARDER);
+		ajouterAction(actions,LesActions.AJOUTER_VOLAILLE_ABATTABLE);
 		ajouterAction(actions,LesActions.QUITTER);
 		ajouterAction(actions,LesActions.MODIFIER_POIDS_ABATTAGE);
 		ajouterAction(actions,LesActions.MODIFIER_PRIX_DU_JOUR);
 		ajouterAction(actions,LesActions.VENDRE_VOLAILLE);
+		ajouterAction(actions,LesActions.RENDRE_VOLAILLE);
 		
 		boolean vContinuer;
 		int vActionSaisie;
