@@ -8,4 +8,5 @@ public class LesActions {
 	public static final ModifierPoidsAbattage MODIFIER_POIDS_ABATTAGE  = new ModifierPoidsAbattage();
 	public static final ModifierPrixDuJour MODIFIER_PRIX_DU_JOUR  = new ModifierPrixDuJour();
 	public static final VendreVolaille VENDRE_VOLAILLE = new VendreVolaille();
+	//public static final RendreVolaille RENDRE_VOLAILLE = new RendreVolaille();
 }

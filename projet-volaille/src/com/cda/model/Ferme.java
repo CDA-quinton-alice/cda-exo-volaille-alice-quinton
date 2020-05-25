@@ -9,6 +9,7 @@ import com.cda.model.abat.Canard;
 import com.cda.model.abat.Poulet;
 import com.cda.model.abat.VolailleAbattable;
 import com.cda.model.nabat.Paon;
+import com.cda.model.nabat.VolailleAGarder;
 import com.cda.model.nabat.Cygne;
 
 public final class Ferme {
@@ -150,4 +151,27 @@ public final class Ferme {
 		}
 		return vVolailleAVendre;
 	}
+	public VolailleAGarder rendreVolaille(int vTypeVolaille, String vIdVolailleARendre) {
+		VolailleAGarder vVolailleARendre = null;
+		if (this.volaillesMap.containsKey(vIdVolailleARendre)) {
+			Volaille vVolailleARendreTmp = this.volaillesMap.get(vIdVolailleARendre);
+			if (vVolailleARendreTmp instanceof VolailleAGarder) {
+				boolean vSuppressionReussie = false;
+				if (vTypeVolaille == 0 && this.paons.contains(vVolailleARendreTmp)) {
+					vSuppressionReussie = this.paons.remove(vVolailleARendreTmp);
+
+				} else if (vTypeVolaille == 1 && this.cygnes.contains(vVolailleARendreTmp)) {
+					vSuppressionReussie = this.cygnes.remove(vVolailleARendreTmp);
+				}
+				if(vSuppressionReussie) {
+					this.volaillesMap.remove(vIdVolailleARendre);
+					this.volaillesSet.remove(vVolailleARendreTmp);
+					vVolailleARendre = (VolailleAGarder)vVolailleARendreTmp;
+				}
+			}
+		}
+		return vVolailleARendre;
+}// ajout de la méthode rendreVolaille dans classe Ferme
 }
+			
+
