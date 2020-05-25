@@ -25,7 +25,7 @@ final class RendreVolaille extends Action {
 		
 		int vTypeVolaille = IHM_INS.lireEntier();
 		
-		IHM_INS.afficher("saisissez l'id de la volaille à vendre parmi :");
+		IHM_INS.afficher("saisissez l'id de la volaille à rendre parmi :");
 		Set<Volaille> vVolailles = LA_FERME.getVolailles(true,vTypeVolaille);
 		for (Volaille vVolaille : vVolailles) {
 			IHM_INS.afficher(vVolaille.toString());
