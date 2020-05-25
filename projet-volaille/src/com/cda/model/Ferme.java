@@ -9,6 +9,7 @@ import com.cda.model.abat.Canard;
 import com.cda.model.abat.Poulet;
 import com.cda.model.abat.VolailleAbattable;
 import com.cda.model.nabat.Paon;
+import com.cda.model.nabat.Cygne;
 
 public final class Ferme {
 	public static final Ferme LA_FERME = new Ferme();
@@ -20,6 +21,7 @@ public final class Ferme {
 	private final Set<Canard> canards;
 	private final Set<Poulet> poulets;
 	private final Set<Paon> paons;
+	private final Set<Cygne> cygnes; // les cygnes avaient encore disparus ! 
 
 	private Ferme() {
 		this.volaillesMap = new HashMap<>();
@@ -48,6 +50,10 @@ public final class Ferme {
 		this.paons.add(pPaon);
 		this.ajouterVolaille(pPaon);
 	}
+	private void ajouterCygne(Cygne pCygne) { // ajout de la méthode ajouterCygne
+		this.cygnes.add(pCygne);
+		this.ajouterVolaille(pCygne); 
+	}
 
 	public Set<Volaille> getVolailles() {
 		return this.volaillesSet;
@@ -62,7 +68,11 @@ public final class Ferme {
 
 		} else if (!pEstAbattable && pTypeVolaille == 0) {
 			return new TreeSet<Volaille>(this.paons);
-
+		}else if (!pEstAbattable && pTypeVolaille == 0) {
+			return new TreeSet<Volaille>(this.cygnes);
+			// on rajoute encore les cygnes laissés pour compte dans la boucle de la méthode GetVolailles 
+			// mais ce changement est peut être provisoire car normalement 
+			// ni les cygnes ni les paons ne sont abattables 
 		}
 		return new TreeSet<>();
 	}
@@ -79,6 +89,9 @@ public final class Ferme {
 			return true;
 
 		} else if (!pEstAbattables && vTypeVolaille == 0 && paons.size() != Paon.NB_MAX) {
+		} else if (!pEstAbattables && vTypeVolaille == 0 && paons.size() != Cygne.NB_MAX) {
+			// idem on rajoute dans la méthode ajoutPossible les cygnes mais le paramètre pEstAbattables
+			// est un peu embêtant 
 			return true;
 		}
 
@@ -107,6 +120,9 @@ public final class Ferme {
 		if (vTypeVolaille == 0 && paons.size() != Paon.NB_MAX) {
 			vNouvelleVolaille = new Paon();
 			LA_FERME.ajouterPaon((Paon) vNouvelleVolaille);
+		} else if (vTypeVolaille == 0 && cygnes.size() != Cygne.NB_MAX) {
+			vNouvelleVolaille = new Cygne();
+			LA_FERME.ajouterCygne((Cygne) vNouvelleVolaille); // cygne ajouté à la méthode ajouterVolailleAGarder
 		}
 
 		return vNouvelleVolaille;
