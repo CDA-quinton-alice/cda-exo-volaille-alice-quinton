@@ -27,7 +27,7 @@ final class AjouterVolailleAGarder extends Action {
 			
 
 			int vTypeVolaille = IHM_INS.lireEntier();
-			if( LA_FERME.ajoutPossible(false, vTypeVolaille)) { // changer en true pour que le menu puisse fonctionner
+			if( LA_FERME.ajoutPossible(true, vTypeVolaille)) { // changer en true pour que le menu puisse fonctionner
 				Volaille vNouvelleVolaille = LA_FERME.ajouterVolailleAGarder(vTypeVolaille);
 				IHM_INS.afficher("> la volaille suivante a été ajoutée : "+vNouvelleVolaille);
 			} else {
