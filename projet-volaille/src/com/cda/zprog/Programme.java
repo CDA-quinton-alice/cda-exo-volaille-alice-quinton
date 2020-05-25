@@ -9,7 +9,7 @@ import static com.cda.tools.Ihm.IHM_INS;
 public class Programme {
 
 	public static void main(String[] args) {
-		IHM_INS.changerMode(false,true);
+		IHM_INS.changerMode(true,true); // mettre en true, true pour passer en interactif 
 		
 		TreeMap<Integer,Action> actions = new TreeMap<>();
 		ajouterAction(actions,LesActions.AFFICHER_LES_VOLAILLES);
